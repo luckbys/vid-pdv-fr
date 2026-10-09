@@ -1,0 +1,20 @@
+{
+  "revision": 2,
+  "type": "Editorial review of one frame per beat plus timing/loudness analysis. Scores evaluate the creative; they are not measured campaign conversion rates.",
+  "reviewed_frames": 104,
+  "contact_sheets": ["qa/v2/contact-1.jpg", "qa/v2/contact-2.jpg", "qa/v2/contact-3.jpg", "qa/v2/contact-4.jpg"],
+  "initial_scores": {"Hook": 9, "Readability": 8, "Motion Quality": 8, "Brand Accuracy": 9, "Sound Sync": 8},
+  "three_lowest_improved": [
+    {"category": "Readability", "change": "Moved the stock check into the Reels safe area and enlarged the free-demonstration label."},
+    {"category": "Motion Quality", "change": "Added an animated trend connector and moving cursor to the reports scene."},
+    {"category": "Sound Sync", "change": "Added the 1.0-second opening callout cue and corrected the encoded master to -14.00 LUFS."}
+  ],
+  "scores": {"Hook": 9, "Readability": 9, "Motion Quality": 9, "Brand Accuracy": 9, "Sound Sync": 9},
+  "findings": {
+    "Hook": "The question Fila no caixa? and the POS illustration are visible at frame zero; the spoken question finishes inside the first three seconds.",
+    "Readability": "Large navy/purple headings, high-contrast burned captions and clear website/WhatsApp details. Essential text avoids lower overlays.",
+    "Motion Quality": "Eased 3D hero movement, drifting manual-work cards, moving flow dots, scanning line, staggered stock boxes, bar fills and an animated trend line.",
+    "Brand Accuracy": "Exact official Frenty logo, approved light palette and F-PDV terminology. Symbolic objects and native illustrations use the benefits supplied by the user. Free demonstration is stated in the supplied copy.",
+    "Sound Sync": "120 BPM recovered from percussion RMS transients. All scene starts and important callout times land on 0.5-second beats. Captions follow generated word boundaries. Preview AAC measures -14.00 LUFS and -2.22 dBTP."
+  }
+}

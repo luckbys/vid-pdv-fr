@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Frenty · F-PDV · Motion narrado</title>
+<style>
+@font-face{font-family:Space;src:url(data:font/ttf;base64,__FONT_REG__) format('truetype');font-weight:400}
+@font-face{font-family:Space;src:url(data:font/ttf;base64,__FONT_BOLD__) format('truetype');font-weight:700}
+*{box-sizing:border-box}html,body{margin:0;background:#e9e6e0;width:100%;height:100%;overflow:hidden}body{display:grid;place-items:center;font-family:Space,sans-serif}canvas{display:block;width:min(100vw,56.25vh);height:min(177.7778vw,100vh)}#controls{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);background:#10172b;border:1px solid #5b2eaa;padding:9px 14px;color:white;border-radius:14px;display:flex;gap:10px;align-items:center}button{font:700 13px Space;background:#5b2eaa;color:white;border:0;border-radius:8px;padding:8px 12px;cursor:pointer}input{width:150px;accent-color:#06b6d4}#time{font-size:12px;min-width:65px}.render #controls{display:none}
+</style></head><body><canvas id="c" width="1080" height="1920" aria-label="Motion promocional narrado do F-PDV da Frenty"></canvas><div id="controls"><button id="play">Reproduzir</button><input id="scrub" type="range" min="0" max="52" step=".033"><span id="time">0:00 / 0:52</span><button id="sound">Som ligado</button></div><audio id="audio" src="data:audio/mp4;base64,__AUDIO__"></audio>
+<script>
+const ctx=document.getElementById('c').getContext('2d');
+const P={bg:'#F5F3EF',navy:'#10172B',purple:'#5B2EAA',cyan:'#06B6D4',lav:'#DDD1FA',pale:'#EBE4F4',muted:'#536074',white:'#FFFFFF',line:'#CFC5DD'};
+const STORY=__STORY__,GRID=__GRID__,CAPS=__CAPS__,STARTS=GRID.scene_switches,D=STORY.duration;let revision=2,now=0;
+const logo=new Image(),heroImg=new Image();logo.src='data:image/png;base64,__LOGO__';heroImg.src='data:image/png;base64,__HERO__';
+const TAU=Math.PI*2,clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),mix=(a,b,p)=>a+(b-a)*p,ease=v=>1-Math.pow(1-clamp(v),3),easeIO=v=>{v=clamp(v);return v<.5?4*v*v*v:1-Math.pow(-2*v+2,3)/2};
+function rr(x,y,w,h,r=24,fill=P.white,stroke=null,lw=2){ctx.beginPath();ctx.roundRect(x,y,w,h,r);if(fill){ctx.fillStyle=fill;ctx.fill()}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw;ctx.stroke()}}
+function circle(x,y,r,fill=null,stroke=null,lw=3){ctx.beginPath();ctx.arc(x,y,r,0,TAU);if(fill){ctx.fillStyle=fill;ctx.fill()}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw;ctx.stroke()}}
+function line(pts,col=P.cyan,w=4){ctx.beginPath();pts.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.strokeStyle=col;ctx.lineWidth=w;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke()}
+function txt(s,x,y,size=44,col=P.navy,weight=400,align='left'){ctx.font=weight+' '+size+'px Space';ctx.fillStyle=col;ctx.textAlign=align;ctx.textBaseline='alphabetic';ctx.fillText(s,x,y)}
+function textfit(s,x,y,size,max,col=P.navy,weight=700,align='left'){ctx.font=weight+' '+size+'px Space';let w=ctx.measureText(s).width;txt(s,x,y,w>max?size*max/w:size,col,weight,align)}
+function grad(x,y,x2,y2,a=P.purple,b='#8154C8'){let g=ctx.createLinearGradient(x,y,x2,y2);g.addColorStop(0,a);g.addColorStop(1,b);return g}
+function shadow(fn,blur=30,opacity=.10){ctx.save();ctx.shadowColor='rgba(16,23,43,'+opacity+')';ctx.shadowBlur=blur;ctx.shadowOffsetY=12;fn();ctx.restore()}
+function enter(u,at,fn,seconds=.43){let p=at===0?1:ease((u-at)/seconds);if(p<=0)return;ctx.save();ctx.globalAlpha*=p;ctx.translate(0,(1-p)*27);fn(p);ctx.restore()}
+function icon(type,x,y,s=70,col=P.purple){ctx.save();ctx.translate(x,y);ctx.scale(s/80,s/80);ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=4;ctx.strokeStyle=col;
+ if(type==='doc'){rr(-24,-31,48,63,6,null,col,4);line([[-12,-13],[12,-13]],col,4);line([[-12,0],[12,0]],col,4);line([[-12,13],[4,13]],col,4)}
+ if(type==='check')line([[-23,-1],[-6,16],[25,-18]],col,5);
+ if(type==='user'){circle(0,-17,13,null,col,4);ctx.beginPath();ctx.arc(0,28,24,Math.PI,0);ctx.stroke()}
+ if(type==='bag'){rr(-25,-17,50,48,6,null,col,4);ctx.beginPath();ctx.arc(0,-16,14,Math.PI,0);ctx.stroke()}
+ if(type==='box'){line([[-28,-15],[0,-29],[28,-15],[0,0],[-28,-15],[-28,17],[0,31],[28,17],[28,-15]],col,4);line([[0,0],[0,31]],col,4);line([[-14,-22],[14,-7],[14,7]],col,4)}
+ if(type==='chart'){line([[-29,-27],[-29,29],[30,29]],col,4);line([[-16,14],[-2,-5],[12,3],[28,-18]],col,5)}
+ if(type==='clock'){circle(0,0,28,null,col,4);line([[0,-16],[0,0],[15,7]],col,4)}
+ if(type==='arrow')line([[-26,0],[24,0],[9,-16],[24,0],[9,16]],col,5);
+ if(type==='loop'){ctx.beginPath();ctx.arc(0,0,25,.2,Math.PI*1.8);ctx.stroke();line([[18,-23],[28,-14],[28,-29]],col,4)}
+ if(type==='phone'){ctx.beginPath();ctx.moveTo(-17,-24);ctx.quadraticCurveTo(-29,-15,-16,8);ctx.quadraticCurveTo(0,32,22,21);ctx.lineTo(13,8);ctx.lineTo(3,13);ctx.quadraticCurveTo(-6,7,-12,-5);ctx.lineTo(-5,-14);ctx.closePath();ctx.stroke()}
+ ctx.restore()}
+function tag(s,x,y,w,size=31){rr(x,y,w,65,33,P.pale);textfit(s,x+w/2,y+43,size,w-45,P.purple,700,'center')}
+function head(label,a,b,sub=null,size=105){txt(label.toUpperCase(),80,345,29,P.purple,700);textfit(a,80,473,size,890);textfit(b,80,584,size,890,P.purple);if(sub)textfit(sub,83,677,42,875,P.muted,400)}
+function hero(x,y,w,u=0,zoom=0){let h=w*heroImg.height/heroImg.width,p=1+zoom*ease(u/3);ctx.save();ctx.translate(x+w/2,y+h/2+3*Math.sin(now*1.6));ctx.scale(p,p);ctx.drawImage(heroImg,-w/2,-h/2,w,h);ctx.restore()}
+function chip(type,s,x,y,w,col=P.purple){shadow(()=>rr(x,y,w,106,24,P.white,P.line),18,.055);circle(x+54,y+53,33,col===P.cyan?'#DBF4F7':P.pale);icon(type,x+54,y+53,46,col);textfit(s,x+105,y+67,37,w-123,P.navy,700)}
+function node(type,s,x,y,col){shadow(()=>circle(x,y,74,P.white,P.line),22,.065);circle(x,y,54,col===P.cyan?'#DEF5F6':P.pale);icon(type,x,y,66,col);textfit(s,x,y+118,39,235,P.navy,700,'center')}
+function paper(x,y,w,h,label,col=P.purple){shadow(()=>rr(x,y,w,h,27,P.white,P.line),30,.07);rr(x,y,w,92,[27,27,0,0],col);textfit(label,x+28,y+61,39,w-56,P.white,700);[155,195,235].forEach((a,k)=>line([[x+34,y+a],[x+w-40-k*25,y+a]],'#DCD5E3',4));
+ let bottom=y+h-75;icon('doc',x+62,bottom,64,col);circle(x+w-65,bottom,31,P.pale);icon('check',x+w-65,bottom,40,col)}
+function cube(x,y,s,col=P.purple){let d=s*.22;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+s*.78,y);ctx.lineTo(x+s*.78,y+s*.78);ctx.lineTo(x,y+s*.78);ctx.closePath();ctx.fillStyle=grad(x,y,x+s,y+s,col,'#8154C8');ctx.fill();
+ ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+d,y-d);ctx.lineTo(x+s,y-d);ctx.lineTo(x+s*.78,y);ctx.closePath();ctx.fillStyle='#C8AFE9';ctx.fill();
+ ctx.beginPath();ctx.moveTo(x+s*.78,y);ctx.lineTo(x+s,y-d);ctx.lineTo(x+s,y+s*.56);ctx.lineTo(x+s*.78,y+s*.78);ctx.closePath();ctx.fillStyle='#442381';ctx.fill();line([[x+s*.35,y],[x+s*.35,y+s*.75]],'#A879D4',8);rr(x+s*.13,y+s*.19,s*.43,s*.18,6,P.white);}
+function baseline(t){ctx.fillStyle=P.bg;ctx.fillRect(0,0,1080,1920);ctx.save();ctx.globalAlpha=.8;ctx.beginPath();ctx.arc(1120,1190,540,Math.PI*.76,Math.PI*1.42);ctx.lineWidth=144;ctx.strokeStyle='#E3D8F7';ctx.stroke();ctx.restore();
+ ctx.save();ctx.globalAlpha=.40;ctx.beginPath();ctx.moveTo(1020,660);ctx.bezierCurveTo(850,746,1035,962,919,1098);ctx.lineTo(784,1224);ctx.strokeStyle=P.cyan;ctx.lineWidth=3;ctx.stroke();ctx.restore();
+ rr(80,170,332,110,16,P.navy);ctx.drawImage(logo,104,184,284,92);rr(764,190,239,65,33,P.lav);txt('F-PDV',884,234,33,P.navy,700,'center')}
+function captions(t){let c=CAPS.find(c=>t>=c.start&&t<c.end);if(!c)return;const y=1490;ctx.font='700 42px Space';let words=c.text.split(' '),lines=[],part='';for(let w of words){let v=part?part+' '+w:w;if(ctx.measureText(v).width>798&&part){lines.push(part);part=w}else part=v}if(part)lines.push(part);let h=lines.length===1?92:146;
+ rr(80,y,865,h,22,P.navy);lines.forEach((s,k)=>txt(s,512.5,y+(lines.length===1?59:58+k*53),42,P.white,700,'center'));rr(103,y+21,5,h-42,3,P.cyan)}
+function footer(t,i){for(let k=0;k<9;k++){rr(80+k*97,1680,79,5,3,k<i?P.purple:k===i?P.cyan:'#D9D0E2');if(k===i)rr(80+k*97,1680,79*clamp((t-STARTS[i])/(STORY.segments[i].end-STARTS[i])),5,3,P.purple)}txt('F-PDV · FRENTY',80,1730,25,P.muted,700);txt(String(i+1).padStart(2,'0')+' / 09',945,1730,25,P.muted,400,'right')}
+const SCENES=[
+ function(u,t){
+  head('Varejo em movimento','Fila no caixa?','Faça a venda fluir.',null,125);
+  hero(83,804,921,u,.025);
+  [.5,1,1.5].forEach((a,k)=>enter(u,a,()=>{circle(136+k*99,746,38,k===1?P.pale:'#DEF5F6');icon('user',136+k*99,746,43,k===1?P.purple:P.cyan)}));
+  enter(u,.5,()=>{circle(895,756,65,P.purple);icon('clock',895,756,74,P.white);ctx.save();ctx.translate(895,756);ctx.rotate(u*.7);circle(0,-79,6,P.cyan);ctx.restore()});
+  txt('Conheça o F-PDV da Frenty.',80,1415,39,P.navy,700);
+ },
+ function(u,t){
+  head('O desafio no caixa','A venda demora.','O cliente espera.','Tempo gasto com tarefas manuais.',97);
+  const cards=[['bag','Venda lenta',103,780,608,-.033],['doc','Conferência manual',322,1017,629,.025],['loop','Retrabalho',108,1254,608,-.022]];
+  cards.forEach((a,k)=>{ctx.save();ctx.translate(a[2]+9*Math.sin(u*.7+k),a[3]);ctx.rotate(a[5]);shadow(()=>rr(0,0,a[4],150,27,P.white,P.line),25,.065);circle(75,75,46,k===1?'#DEF5F6':P.pale);icon(a[0],75,75,59,k===1?P.cyan:P.purple);textfit(a[1],146,92,42,a[4]-174);ctx.restore()});
+  enter(u,1,()=>{ctx.save();ctx.setLineDash([10,17]);line([[704,854],[836,905],[836,1003]],P.line,4);line([[312,1101],[252,1155],[252,1236]],P.line,4);ctx.restore()});
+  enter(u,3,()=>{circle(874,1340,66,P.lav);icon('clock',874,1340,80,P.purple)});
+ },
+ function(u,t){
+  head('F-PDV da Frenty','F-PDV.','Venda conectada.','Atendimento, estoque e emissão fiscal.',108);
+  let hub=[540,1072],nodes=[['bag','Atendimento',184,943,P.purple],['box','Estoque',867,943,P.cyan],['doc','Fiscal',540,1300,P.purple]];
+  nodes.forEach((a,k)=>enter(u,k===0?0:k===1?1.5:2.5,()=>{line([hub,[a[2],a[3]]],P.line,4);let p=(u*.45+k*.24)%1;circle(mix(hub[0],a[2],p),mix(hub[1],a[3],p),7,P.cyan);node(...a)}));
+  shadow(()=>circle(...hub,141,P.navy),36,.10);circle(...hub,155,null,P.purple,2);ctx.drawImage(logo,428,1038,224,72);txt('F-PDV',540,1155,30,P.lav,700,'center');
+ },
+ function(u,t){
+  head('Atendimento e fiscal','Mais agilidade','no atendimento.','Interface intuitiva + emissão fiscal.',105);
+  hero(165,808,833,u,.018);
+  paper(93,994,310,298,'Nota fiscal');
+  enter(u,.5,()=>{let y=966+(u%1)*172;ctx.save();ctx.globalAlpha=.55*(1-u%1);line([[478,y],[891,y]],P.cyan,4);ctx.restore()});
+  enter(u,2,()=>chip('bag','Interface intuitiva',80,1342,442));
+  enter(u,3.5,()=>chip('doc','Emissão fiscal',555,1342,412,P.cyan));
+ },
+ function(u,t){
+  head('Estoque integrado','Venda e estoque.','No mesmo fluxo.','Produtos disponíveis em tempo real.',98);
+  shadow(()=>circle(229,1029,129,P.white,P.line),30,.065);circle(229,1029,100,P.pale);icon('bag',229,1029,149,P.purple);txt('Venda',229,1242,47,P.navy,700,'center');
+  cube(686,991,265);enter(u,.5,()=>cube(818,874,152));txt('Estoque',821,1271,44,P.navy,700,'center');
+  line([[378,1030],[617,1030]],P.line,4);let p=(u*.55)%1;circle(391+212*p,1030,10,P.cyan);icon('arrow',505,1030,74,P.purple);
+  enter(u,1.5,()=>{circle(918,1064,30,'#DEF5F6');icon('check',918,1064,39,P.cyan)});
+  enter(u,3,()=>tag('ESTOQUE ATUALIZADO',139,1371,768,35));
+ },
+ function(u,t){
+  head('Mais precisão','Menos tarefas','manuais.','Informações de venda organizadas.',109);
+  paper(102,801,416,486,'Dados da venda');
+  enter(u,.5,()=>chip('check','Organização',563,834,403));
+  enter(u,1.5,()=>chip('check','Precisão',563,1011,403,P.cyan));
+  enter(u,3,()=>chip('check','Controle',563,1188,403));
+  enter(u,3,()=>{rr(146,1360,788,76,38,P.purple);txt('MENOS RETRABALHO',540,1410,35,P.white,700,'center')});
+ },
+ function(u,t){
+  head('Relatórios de vendas','Enxergue suas','vendas.','Dados para apoiar suas decisões.',109);
+  shadow(()=>rr(80,782,887,530,30,P.white,P.line),26,.055);txt('VISÃO DAS VENDAS',119,848,29,P.purple,700);line([[145,1240],[919,1240]],P.line,3);
+  const heights=[240,325,200,350,275,300];heights.forEach((h,k)=>{let x=164+k*124;rr(x,1240-h,68,h,[11,11,0,0],P.pale);let fill=h*ease((u-k*.5)/.65);if(fill>1)rr(x,1240-fill,68,fill,[11,11,0,0],k%2?P.purple:P.cyan)});
+  enter(u,2.5,()=>{let pts=heights.map((h,k)=>[198+k*124,1240-h-26]);ctx.save();ctx.beginPath();ctx.rect(138,869,783*ease((u-2.5)/.8),365);ctx.clip();line(pts,P.navy,4);pts.forEach(p=>circle(...p,7,P.cyan));ctx.restore();let q=((u-2.5)*.72)%5,k=Math.floor(q),p=q-k;circle(mix(pts[k][0],pts[k+1][0],p),mix(pts[k][1],pts[k+1][1],p),11,P.white,P.purple,3)});
+  enter(u,3.5,()=>tag('VENDAS · TENDÊNCIAS · DECISÕES',119,1375,816,33));
+ },
+ function(u,t){
+  head('Seu próximo passo','Veja o F-PDV','na sua loja.','Conheça o fluxo de venda na prática.',111);
+  hero(93,800,907,u,.018);
+  tag('DEMONSTRAÇÃO GRATUITA',80,740,577,33);
+  enter(u,.5,()=>{rr(80,1352,865,110,28,P.purple);txt('Agende uma demonstração',512.5,1420,45,P.white,700,'center')});
+  enter(u,1.5,()=>{circle(768,1018,62,P.purple);ctx.beginPath();ctx.moveTo(751,992);ctx.lineTo(791,1018);ctx.lineTo(751,1044);ctx.closePath();ctx.fillStyle=P.white;ctx.fill()});
+ },
+ function(u,t){
+  head('F-PDV da Frenty','Agende sua','demonstração.',null,111);
+  rr(80,731,865,133,28,P.purple);textfit('Conheça o F-PDV na prática',120,812,47,785,P.white,700);
+  txt('frenty.com.br',80,1015,76,P.navy,700);line([[80,1037],[599,1037]],P.cyan,6);
+  enter(u,.5,()=>{circle(119,1114,37,'#DEF5F6');icon('phone',119,1114,45,P.purple);txt('WhatsApp',177,1086,29,P.muted,400);txt('(11) 9 4841-1000',177,1143,48,P.navy,700)});
+  enter(u,1.5,()=>hero(525,1188,430,u));
+  enter(u,2.5,()=>tag('Demonstração gratuita',80,1313,446,36));
+ }
+];
+function seek(time){now=clamp(time,0,D-.001);let i=STARTS.findLastIndex(s=>s<=now),u=now-STARTS[i];baseline(now);ctx.save();ctx.translate(0,(1-ease(u/.3))*-9);SCENES[i](u,now);ctx.restore();captions(now);footer(now,i);
+ if(i>0&&u<.24){ctx.save();ctx.globalAlpha=.20*(1-u/.24);rr(1040-u*140,290,18,1140,9,P.cyan);ctx.restore()}
+ document.getElementById('time').textContent='0:'+String(Math.floor(now)).padStart(2,'0')+' / 0:'+D;document.getElementById('scrub').value=now;
+}
+window.seek=seek;window.setRevision=n=>revision=n;window.renderInfo={width:1080,height:1920,fps:30,duration:D,starts:STARTS};
+window.ready=Promise.all([document.fonts.load('700 110px Space'),document.fonts.load('400 42px Space'),logo.decode(),heroImg.decode()]).then(()=>seek(0));
+const audio=document.getElementById('audio');let running=false,origin=0,base=0,sound=true;
+function tick(ts){if(!running)return;let t=base+(ts-origin)/1000;if(t>=D){running=false;seek(D-.001);audio.pause();document.getElementById('play').textContent='Reproduzir';return}seek(t);requestAnimationFrame(tick)}
+document.getElementById('scrub').max=D;
+document.getElementById('play').onclick=()=>{running=!running;if(running){base=now>=D-.1?0:now;origin=performance.now();if(sound){audio.currentTime=base;audio.play()}requestAnimationFrame(tick)}else audio.pause();document.getElementById('play').textContent=running?'Pausar':'Reproduzir'};
+document.getElementById('scrub').oninput=e=>{seek(Number(e.target.value));base=now;origin=performance.now();audio.currentTime=now};
+document.getElementById('sound').onclick=()=>{sound=!sound;document.getElementById('sound').textContent=sound?'Som ligado':'Som desligado';if(sound&&running){audio.currentTime=now;audio.play()}else audio.pause()};
+document.getElementById('c').onclick=()=>{if(now>=STARTS[7]&&!new URLSearchParams(location.search).has('render'))window.open('https://www.frenty.com.br/agenda','_blank','noopener')};
+if(new URLSearchParams(location.search).has('render'))document.body.classList.add('render');
+</script></body></html>

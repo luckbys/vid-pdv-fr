@@ -1,0 +1,760 @@
+{
+  "voice": "pt-BR-AntonioNeural",
+  "rate": "+4%",
+  "language": "pt-BR",
+  "duration": 52.0,
+  "fps": 30,
+  "beat_period": 0.5,
+  "segments": [
+    {
+      "id": "hook",
+      "title": "Fila no caixa?",
+      "text": "Fila no caixa?",
+      "spoken": "Fila no caixa?",
+      "audio": "voice-00.mp3",
+      "duration": 1.872,
+      "words": [
+        {
+          "type": "WordBoundary",
+          "offset": 980830,
+          "duration": 3125000,
+          "text": "Fila"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 4225830,
+          "duration": 1202080,
+          "text": "no"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 5547910,
+          "duration": 4807500,
+          "text": "caixa"
+        }
+      ],
+      "start": 0,
+      "voice_start": 0.08,
+      "voice_end": 1.9520000000000002,
+      "end": 3
+    },
+    {
+      "id": "dor",
+      "title": "A venda demora.\nO cliente espera.",
+      "text": "Vendas lentas e tarefas manuais fazem o cliente esperar e aumentam o retrabalho.",
+      "spoken": "Vendas lentas e tarefas manuais fazem o cliente esperar e aumentam o retrabalho.",
+      "audio": "voice-01.mp3",
+      "duration": 5.256,
+      "words": [
+        {
+          "type": "WordBoundary",
+          "offset": 980830,
+          "duration": 4447080,
+          "text": "Vendas"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 5547910,
+          "duration": 3245000,
+          "text": "lentas"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 8913330,
+          "duration": 1202080,
+          "text": "e"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 10235410,
+          "duration": 3846250,
+          "text": "tarefas"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 14202080,
+          "duration": 5047910,
+          "text": "manuais"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 19370000,
+          "duration": 3485410,
+          "text": "fazem"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 22975830,
+          "duration": 480830,
+          "text": "o"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 23577080,
+          "duration": 3966250,
+          "text": "cliente"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 27663330,
+          "duration": 3966250,
+          "text": "esperar"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 31750000,
+          "duration": 721250,
+          "text": "e"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 32591250,
+          "duration": 5047910,
+          "text": "aumentam"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 37759580,
+          "duration": 240410,
+          "text": "o"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 38120000,
+          "duration": 6009580,
+          "text": "retrabalho"
+        }
+      ],
+      "start": 3,
+      "voice_start": 3.08,
+      "voice_end": 8.336,
+      "end": 8.5
+    },
+    {
+      "id": "conexao",
+      "title": "F-PDV.\nVenda conectada.",
+      "text": "Com o F-PDV da Frenty, sua loja conecta atendimento, estoque e emissão fiscal.",
+      "spoken": "Com o éfe pê dê vê da Frenti, sua loja conecta atendimento, estoque e emissão fiscal.",
+      "audio": "voice-02.mp3",
+      "duration": 6.048,
+      "words": [
+        {
+          "type": "WordBoundary",
+          "offset": 980830,
+          "duration": 2524160,
+          "text": "Com"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 3625000,
+          "duration": 600830,
+          "text": "o"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 4346250,
+          "duration": 2644160,
+          "text": "éfe"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 7110410,
+          "duration": 1562500,
+          "text": "pê"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 8793330,
+          "duration": 1202080,
+          "text": "dê"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 10115410,
+          "duration": 1442500,
+          "text": "vê"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 11677910,
+          "duration": 961660,
+          "text": "da"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 12759580,
+          "duration": 4327080,
+          "text": "Frenti"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 19971250,
+          "duration": 1922910,
+          "text": "sua"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 22014580,
+          "duration": 3365410,
+          "text": "loja"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 25500000,
+          "duration": 3966250,
+          "text": "conecta"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 29586660,
+          "duration": 6730830,
+          "text": "atendimento"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 39202080,
+          "duration": 4086660,
+          "text": "estoque"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 43408750,
+          "duration": 240410,
+          "text": "e"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 43769160,
+          "duration": 3605830,
+          "text": "emissão"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 47495000,
+          "duration": 4687500,
+          "text": "fiscal"
+        }
+      ],
+      "start": 8.5,
+      "voice_start": 8.58,
+      "voice_end": 14.628,
+      "end": 15.0
+    },
+    {
+      "id": "agilidade",
+      "title": "Mais agilidade\nno atendimento.",
+      "text": "Venda com uma interface intuitiva e automatize a emissão das notas fiscais.",
+      "spoken": "Venda com uma interface intuitiva e automatize a emissão das notas fiscais.",
+      "audio": "voice-03.mp3",
+      "duration": 4.92,
+      "words": [
+        {
+          "type": "WordBoundary",
+          "offset": 980830,
+          "duration": 4327080,
+          "text": "Venda"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 5427910,
+          "duration": 1442500,
+          "text": "com"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 6990410,
+          "duration": 721250,
+          "text": "uma"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 7831660,
+          "duration": 5649160,
+          "text": "interface"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 13600830,
+          "duration": 5528750,
+          "text": "intuitiva"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 19250000,
+          "duration": 240410,
+          "text": "e"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 19610410,
+          "duration": 5649160,
+          "text": "automatize"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 25380000,
+          "duration": 240410,
+          "text": "a"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 25740410,
+          "duration": 3725830,
+          "text": "emissão"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 29586660,
+          "duration": 1802910,
+          "text": "das"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 31509580,
+          "duration": 3365410,
+          "text": "notas"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 34995000,
+          "duration": 5889580,
+          "text": "fiscais"
+        }
+      ],
+      "start": 15.0,
+      "voice_start": 15.08,
+      "voice_end": 20.0,
+      "end": 20.5
+    },
+    {
+      "id": "estoque",
+      "title": "Venda e estoque.\nNo mesmo fluxo.",
+      "text": "Atualize o estoque em tempo real e acompanhe os produtos disponíveis.",
+      "spoken": "Atualize o estoque em tempo real e acompanhe os produtos disponíveis.",
+      "audio": "voice-04.mp3",
+      "duration": 4.728,
+      "words": [
+        {
+          "type": "WordBoundary",
+          "offset": 980830,
+          "duration": 5769160,
+          "text": "Atualize"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 6870000,
+          "duration": 240410,
+          "text": "o"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 7230830,
+          "duration": 3846250,
+          "text": "estoque"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 11197080,
+          "duration": 841250,
+          "text": "em"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 12158750,
+          "duration": 2764580,
+          "text": "tempo"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 15043330,
+          "duration": 3725830,
+          "text": "real"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 18889580,
+          "duration": 480830,
+          "text": "e"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 19490410,
+          "duration": 5047910,
+          "text": "acompanhe"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 24658750,
+          "duration": 961660,
+          "text": "os"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 25740410,
+          "duration": 5168330,
+          "text": "produtos"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 31028750,
+          "duration": 7932500,
+          "text": "disponíveis"
+        }
+      ],
+      "start": 20.5,
+      "voice_start": 20.58,
+      "voice_end": 25.308,
+      "end": 25.5
+    },
+    {
+      "id": "precisao",
+      "title": "Menos tarefas\nmanuais.",
+      "text": "Menos digitação repetida. Mais organização e precisão nas informações das vendas.",
+      "spoken": "Menos digitação repetida. Mais organização e precisão nas informações das vendas.",
+      "audio": "voice-05.mp3",
+      "duration": 6.696,
+      "words": [
+        {
+          "type": "WordBoundary",
+          "offset": 980830,
+          "duration": 4086660,
+          "text": "Menos"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 5187500,
+          "duration": 5769160,
+          "text": "digitação"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 11077080,
+          "duration": 6490410,
+          "text": "repetida"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 25841250,
+          "duration": 2524160,
+          "text": "Mais"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 28485410,
+          "duration": 8172910,
+          "text": "organização"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 36778750,
+          "duration": 360409,
+          "text": "e"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 37259580,
+          "duration": 5047910,
+          "text": "precisão"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 42427910,
+          "duration": 1081660,
+          "text": "nas"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 43630000,
+          "duration": 7572080,
+          "text": "informações"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 51322080,
+          "duration": 2043330,
+          "text": "das"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 53485410,
+          "duration": 5047910,
+          "text": "vendas"
+        }
+      ],
+      "start": 25.5,
+      "voice_start": 25.58,
+      "voice_end": 32.275999999999996,
+      "end": 32.5
+    },
+    {
+      "id": "relatorios",
+      "title": "Enxergue suas\nvendas.",
+      "text": "Acompanhe relatórios, identifique tendências e decida com mais clareza.",
+      "spoken": "Acompanhe relatórios, identifique tendências e decida com mais clareza.",
+      "audio": "voice-06.mp3",
+      "duration": 4.992,
+      "words": [
+        {
+          "type": "WordBoundary",
+          "offset": 980830,
+          "duration": 6009580,
+          "text": "Acompanhe"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 7110410,
+          "duration": 6130000,
+          "text": "relatórios"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 15163330,
+          "duration": 5889580,
+          "text": "identifique"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 21172910,
+          "duration": 5168330,
+          "text": "tendências"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 26461660,
+          "duration": 961660,
+          "text": "e"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 27543330,
+          "duration": 4447080,
+          "text": "decida"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 32110410,
+          "duration": 1562500,
+          "text": "com"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 33793330,
+          "duration": 2524160,
+          "text": "mais"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 36437500,
+          "duration": 5168330,
+          "text": "clareza"
+        }
+      ],
+      "start": 32.5,
+      "voice_start": 32.58,
+      "voice_end": 37.571999999999996,
+      "end": 38.0
+    },
+    {
+      "id": "demo",
+      "title": "Veja o F-PDV\nna sua loja.",
+      "text": "Quer ver como funciona na sua loja? Agende uma demonstração gratuita do F-PDV.",
+      "spoken": "Quer ver como funciona na sua loja? Agende uma demonstração gratuita do éfe pê dê vê.",
+      "audio": "voice-07.mp3",
+      "duration": 6.816,
+      "words": [
+        {
+          "type": "WordBoundary",
+          "offset": 980830,
+          "duration": 2283750,
+          "text": "Quer"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 3384580,
+          "duration": 2283750,
+          "text": "ver"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 5788330,
+          "duration": 2764580,
+          "text": "como"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 8672910,
+          "duration": 5649160,
+          "text": "funciona"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 14442500,
+          "duration": 961660,
+          "text": "na"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 15524160,
+          "duration": 2283750,
+          "text": "sua"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 17927910,
+          "duration": 4687500,
+          "text": "loja"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 30889580,
+          "duration": 5047910,
+          "text": "Agende"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 36057500,
+          "duration": 1202080,
+          "text": "uma"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 37380000,
+          "duration": 6130000,
+          "text": "demonstração"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 43630000,
+          "duration": 5889580,
+          "text": "gratuita"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 49639580,
+          "duration": 1442500,
+          "text": "do"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 51202080,
+          "duration": 2644160,
+          "text": "éfe"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 53966250,
+          "duration": 1562500,
+          "text": "pê"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 55649160,
+          "duration": 1442500,
+          "text": "dê"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 57211660,
+          "duration": 2524160,
+          "text": "vê"
+        }
+      ],
+      "start": 38.0,
+      "voice_start": 38.08,
+      "voice_end": 44.896,
+      "end": 45.5
+    },
+    {
+      "id": "cta",
+      "title": "Agende sua\ndemonstração.",
+      "text": "Acesse frenty.com.br e fale com o nosso time.",
+      "spoken": "Acesse frenti ponto com ponto bê érre e fale com o nosso time.",
+      "audio": "voice-08.mp3",
+      "duration": 4.536,
+      "words": [
+        {
+          "type": "WordBoundary",
+          "offset": 980830,
+          "duration": 5528750,
+          "text": "Acesse"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 6630000,
+          "duration": 3485410,
+          "text": "frenti"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 10235410,
+          "duration": 3005000,
+          "text": "ponto"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 13360410,
+          "duration": 1682500,
+          "text": "com"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 15163330,
+          "duration": 2884580,
+          "text": "ponto"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 18168330,
+          "duration": 1802910,
+          "text": "bê"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 20091250,
+          "duration": 2884580,
+          "text": "érre"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 23096250,
+          "duration": 721250,
+          "text": "e"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 23937500,
+          "duration": 3725830,
+          "text": "fale"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 27783750,
+          "duration": 1562500,
+          "text": "com"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 29466250,
+          "duration": 360409,
+          "text": "o"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 29947080,
+          "duration": 2884580,
+          "text": "nosso"
+        },
+        {
+          "type": "WordBoundary",
+          "offset": 32952080,
+          "duration": 3966250,
+          "text": "time"
+        }
+      ],
+      "start": 45.5,
+      "voice_start": 45.58,
+      "voice_end": 50.116,
+      "end": 52.0
+    }
+  ]
+}
