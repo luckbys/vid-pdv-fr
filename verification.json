@@ -37,5 +37,10 @@
   "previous_transition_max_frame_change_canvas": 40.5,
   "decoded_median_frame_change_gray": 0.027,
   "previous_delivery": {"file_size_bytes": 5770713, "crf": 16, "preset": "fast"},
+  "controls_same_template_and_reference": {
+    "old_pipeline_jpeg_fast_crf16_ss1": {"psnr_y_db": 40.52, "ssim_all": 0.99635, "file_size_bytes": 7543750},
+    "old_pipeline_jpeg_fast_crf16_ss2": {"psnr_y_db": 41.64, "ssim_all": 0.99842, "file_size_bytes": 6472199},
+    "final_png_slow_tune_animation_crf15_ss2": {"psnr_y_db": 56.98, "ssim_all": 0.99946, "file_size_bytes": 6705080}
+  },
   "notes": "Verificação técnica e editorial da revisão 3. As medições de PSNR e SSIM comparam os 104 quadros de batida com uma referência renderizada em 2× e reduzida com Lanczos, no mesmo template. Os critérios de criação não medem conversão de campanha."
 }

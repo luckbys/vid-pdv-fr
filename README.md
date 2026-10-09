@@ -53,9 +53,13 @@ Revise as folhas de contato e atualize `qa-review.json` quando fizer mudanças c
 
 Qualidade medida nas 104 batidas, contra uma referência renderizada em 2× e reduzida com Lanczos, no mesmo template:
 
-- PSNR médio da luminância: 56,98 dB. SSIM médio: 0,99946.
+- PSNR médio da luminância (Y): 56,98 dB. SSIM combinado: 0,99946.
 - Roxo `#5B2EAA` no quadro final: erro máximo de 1 nível. Com o pipeline anterior, o mesmo ponto saía com erro de 3 níveis.
-- Controle com o pipeline anterior no mesmo template, em SS=1: PSNR médio da luminância de 41,9 dB e SSIM de 0,99635. Essa comparação mistura o efeito da captura e do encode com o do supersampling, porque a referência é em 2×.
+- Controles com o pipeline anterior (JPEG q96, x264 `fast`, CRF 16), mesmo template e mesma referência:
+  - em SS=1: PSNR da luminância de 40,5 dB e SSIM combinado de 0,99635;
+  - em SS=2: PSNR da luminância de 41,6 dB e SSIM combinado de 0,99842.
+
+  O supersampling responde por cerca de 1 dB. Os cerca de 15 dB restantes vêm do caminho de captura e codificação (PNG sem perda, matriz BT.709 explícita e x264 `slow` com CRF 15). Não separei esses três fatores entre si. O arquivo final, de 6,7 MB, fica entre os controles de 6,5 MB (SS=2) e 7,5 MB (SS=1).
 
 Transições: a maior variação de um quadro para o seguinte nos cortes caiu de 40,5 para 15,3 níveis por canal (medido no canvas). A troca de cena agora é um crossfade de 0,3 s.
 
