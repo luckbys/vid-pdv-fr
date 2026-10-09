@@ -1,20 +1,21 @@
 {
-  "revision": 2,
-  "type": "Editorial review of one frame per beat plus timing/loudness analysis. Scores evaluate the creative; they are not measured campaign conversion rates.",
+  "revision": 3,
+  "type": "Editorial review of the revision-3 contact sheets (one frame per beat), full-size checks of the scan line, chart, word highlight and crossfade, and frame-to-frame measurements of the rendered canvas. Scores evaluate the creative; they are not measured campaign conversion rates.",
   "reviewed_frames": 104,
-  "contact_sheets": ["qa/v2/contact-1.jpg", "qa/v2/contact-2.jpg", "qa/v2/contact-3.jpg", "qa/v2/contact-4.jpg"],
-  "initial_scores": {"Hook": 9, "Readability": 8, "Motion Quality": 8, "Brand Accuracy": 9, "Sound Sync": 8},
-  "three_lowest_improved": [
-    {"category": "Readability", "change": "Moved the stock check into the Reels safe area and enlarged the free-demonstration label."},
-    {"category": "Motion Quality", "change": "Added an animated trend connector and moving cursor to the reports scene."},
-    {"category": "Sound Sync", "change": "Added the 1.0-second opening callout cue and corrected the encoded master to -14.00 LUFS."}
+  "full_size_checks": ["beat 035 (scan line in fiscal note)", "beat 071 (chart grid and trend-line peak)", "word-8.678 (crossfade midpoint and first-word highlight)", "phone player layout"],
+  "contact_sheets": ["qa/v3/contact-1.jpg", "qa/v3/contact-2.jpg", "qa/v3/contact-3.jpg", "qa/v3/contact-4.jpg"],
+  "previous_revision_scores": {"Hook": 9, "Readability": 9, "Motion Quality": 9, "Brand Accuracy": 9, "Sound Sync": 9},
+  "changes": [
+    {"category": "Readability", "change": "Headlines share one 106 px size (hook 118 px); on-screen text is at least 30 px, including the footer and eyebrow labels; the active caption word is cyan on navy."},
+    {"category": "Motion Quality", "change": "A 0.3 s ease-in-out crossfade replaces the hard cut; the scan line now runs inside the fiscal note; the chart has dashed guide lines; the trend-line peak is no longer clipped; all icons come from one stroke set."},
+    {"category": "Sound Sync", "change": "Word highlight uses the narration's word boundaries for 17 of 24 captions; the approved AAC track is copied without re-encoding."}
   ],
-  "scores": {"Hook": 9, "Readability": 9, "Motion Quality": 9, "Brand Accuracy": 9, "Sound Sync": 9},
+  "scores": {"Hook": 9, "Readability": 9, "Motion Quality": 9, "Brand Accuracy": 9, "Sound Sync": 8},
   "findings": {
-    "Hook": "The question Fila no caixa? and the POS illustration are visible at frame zero; the spoken question finishes inside the first three seconds.",
-    "Readability": "Large navy/purple headings, high-contrast burned captions and clear website/WhatsApp details. Essential text avoids lower overlays.",
-    "Motion Quality": "Eased 3D hero movement, drifting manual-work cards, moving flow dots, scanning line, staggered stock boxes, bar fills and an animated trend line.",
-    "Brand Accuracy": "Exact official Frenty logo, approved light palette and F-PDV terminology. Symbolic objects and native illustrations use the benefits supplied by the user. Free demonstration is stated in the supplied copy.",
-    "Sound Sync": "120 BPM recovered from percussion RMS transients. All scene starts and important callout times land on 0.5-second beats. Captions follow generated word boundaries. Preview AAC measures -14.00 LUFS and -2.22 dBTP."
+    "Hook": "The question Fila no caixa? and the POS illustration are visible at frame zero; the headline is 118 px, still the largest on screen, so the hook keeps its weight.",
+    "Readability": "One headline size across scenes, a 30 px minimum for on-screen text and high-contrast captions. The active caption word is cyan on navy, about 7:1. The caption band, progress bar and logo badge keep their approved positions, so overlap with the platform UI in the bottom and top bands stays a known limitation, documented in the README.",
+    "Motion Quality": "The crossfade spreads the scene change over nine frames. The largest frame-to-frame change at the eight cuts fell from 40.5 to 15.3 levels per channel. The scan line sweeps inside the receipt, the chart has guide lines, the trend-line peak is complete, and the icons share one stroke width.",
+    "Brand Accuracy": "The official logo and the approved palette are unchanged. The icon set is Lucide (ISC licence), drawn in brand purple on light-cyan discs for contrast. Fonts are unchanged.",
+    "Sound Sync": "The approved AAC track is copied as-is. Word timing comes from the narration for 17 of 24 captions. The other seven captions spell brand names in the voice (éfe pê dê vê, frenti ponto com ponto bê érre), so their highlight is spread across the caption window by character and can lead or lag the speech by a fraction of a second."
   }
 }
